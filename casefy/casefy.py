@@ -74,15 +74,15 @@ def snakecase(string: str, keep_together: List[str] = None) -> str:
     return re.sub(r"_$", "", string) if not trailing_underscore else string
 
 
-def uppersnakecase(string: str) -> str:
-    """Convert a string into UPPER_SNAKE_CASE.
+def constcase(string: str) -> str:
+    """Convert a string into CONST_CASE.
 
     Args:
         string (:obj:`str`):
             The string to convert.
 
     Returns:
-        :obj:`str`: The UPPER_SNAKE_CASED string.
+        :obj:`str`: The CONST_CASED string.
     """
     if not string:
         return ""

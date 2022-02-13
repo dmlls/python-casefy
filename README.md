@@ -54,8 +54,8 @@ print(string)  # foo_bar_baz
 string = casefy.snakecase("FOO BAR")
 print(string)  # foo_bar
 
-# UPPER_SNAKE_CASE (a.k.a. constant)
-string = casefy.uppersnakecase("fooBar")
+# CONST_CASE
+string = casefy.constcase("fooBar")
 print(string)  # FOO_BAR
 
 # kebab-case

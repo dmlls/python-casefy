@@ -23,6 +23,8 @@ The latest release can be installed using [pip](https://pypi.org/project/casefy/
 pip install -U casefy
 ```
 
+Casefy is also [available](https://aur.archlinux.org/packages/python-casefy) as an Arch Linux AUR package.
+
 <br>
 
 ## Examples

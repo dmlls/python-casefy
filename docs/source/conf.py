@@ -64,8 +64,8 @@ html_theme = 'sphinx_rtd_theme'
 html_baseurl = 'dmlls.github.io/casefy'
 numfig = True
 
-html_logo = ''
-html_favicon = ''
+html_logo = '_static/images/cover_mono.png'
+html_favicon = '_static/images/favicon.png'
 
 html_context = {
   'display_github': True,

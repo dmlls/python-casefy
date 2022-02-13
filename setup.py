@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="casefy",
-    version="0.0.9",
+    version="0.1.0",
     author="Diego Miguel Lozano",
     author_email="hello@diegomiguel.me",
-    description="Utilities for string case conversion",
+    description="Utilities for string case conversion.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/dmlls/python-casefy",

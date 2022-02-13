@@ -1,4 +1,4 @@
-<p align="center"><img width="400" src="https://github.com/dmlls/python-casefy/blob/main/docs/source/_static/images/cover.png" alt="Casefy"></p>
+<p align="center"><img width="400" src="https://github.com/dmlls/python-casefy/blob/main/docs/source/_static/images/cover.png" alt=""></p>
 
 
 ## Introduction

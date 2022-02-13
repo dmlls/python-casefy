@@ -4,6 +4,9 @@
     <a href="https://pypi.org/project/casefy/">
       <img src="https://img.shields.io/pypi/v/casefy">
     </a>
+    <a href="https://deepsource.io/gh/dmlls/python-casefy/?ref=repository-badge}" target="_blank">
+      <img alt="Active Issues" title="DeepSource" src="https://deepsource.io/gh/dmlls/python-casefy.svg/?label=active+issues&token=dbO3UyrUPWvJp6K_PVZpTcnU"/>
+    </a>
   </a>
 </p>
 

@@ -1,6 +1,6 @@
 """Utilities for string case conversion."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 import re
 from typing import List

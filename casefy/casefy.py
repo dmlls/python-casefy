@@ -1,15 +1,16 @@
 """Utilities for string case conversion."""
 
-__version__ = '0.1.0'
+__version__ = "0.0.9"
 
 import re
+from typing import List
 
 
 def camelcase(string: str) -> str:
     """Convert a string into camelCase.
 
     Args:
-        string (:obj:`str`):
+        string (:obj:`str`): 
             The string to convert to camelCase.
 
     Returns:
@@ -17,11 +18,10 @@ def camelcase(string: str) -> str:
     """
     if not string:
         return ""
-    # Manage separators such as whitespaces, numbers, "-", "_", etc.
-    string = ''.join(f"{s[0].upper()}{s[1:]}"
-                     for s in re.split(r'([\W_\d])', string) if s)
-    # Remove separators (except numbers)
-    string = re.sub(r"[\W_]", "", string)
+    # Turn into snake_case, then remove "_" and capitalize first letter
+    string = "".join(f"{s[0].upper()}{s[1:].lower()}"
+                     for s in re.split(r'_', snakecase(string)) if s)
+    # Make first letter lower
     return f"{string[0].lower()}{string[1:]}" if string else ""
 
 
@@ -40,22 +40,38 @@ def pascalcase(string: str) -> str:
     return capitalcase(camelcase(string))
 
 
-def snakecase(string: str) -> str:
+def snakecase(string: str, keep_together: List[str] = None) -> str:
     """Convert a string into snake_case.
 
     Args:
         string (:obj:`str`):
             The string to convert to snake_case.
+        keep_together (:obj:`List[str]`, `optional`):
+            (Upper) characters to not split, e.g., "HTTP".
 
     Returns:
         :obj:`str`: The snake_cased string.
     """
     if not string:
         return ""
+    leading_underscore: bool = string[0] == "_"
+    trailing_underscore: bool = string[-1] == "_"
+    # If all uppercase, turn into lowercase
+    if string.isupper():
+        string = string.lower()
+    if keep_together:
+        for keep in keep_together:
+            string = string.replace(keep, f"_{keep.lower()}_")
     # Manage separators
     string = re.sub(r"[\W]", "_", string)
     # Manage capital letters and numbers
-    return re.sub(r"([A-Z]|\d+)", r"_\1", string).lower()
+    string = re.sub(r"([A-Z]|\d+)", r"_\1", string)
+    # Add "_" after numbers
+    string = re.sub(r"(\d+)", r"\1_", string).lower()
+    # Remove repeated "_"
+    string = re.sub(r"[_]{2,}", "_", string)
+    string = re.sub(r"^_", "", string) if not leading_underscore else string
+    return re.sub(r"_$", "", string) if not trailing_underscore else string
 
 
 def uppersnakecase(string: str) -> str:
@@ -85,10 +101,8 @@ def kebabcase(string: str) -> str:
     """
     if not string:
         return ""
-    # Manage separators
-    string = re.sub(r"[\W_]", "-", string)
-    # Manage capital letters and numbers
-    return re.sub(r"([A-Z]|\d+)", r"-\1", string).lower()
+    string = snakecase(string).replace("_", "-")
+    return string.strip("-")
 
 
 def upperkebabcase(string: str) -> str:
@@ -106,7 +120,11 @@ def upperkebabcase(string: str) -> str:
     return uppercase(kebabcase(string))
 
 
-def separatorcase(string: str, separator: str) -> str:
+def separatorcase(
+    string: str,
+    separator: str,
+    keep_together: List[str] = None
+) -> str:
     """Convert a string into a case with an arbitrary separator.
 
     Args:
@@ -120,7 +138,16 @@ def separatorcase(string: str, separator: str) -> str:
     """
     if not string:
         return ""
-    return re.sub(r"_", separator, snakecase(string))
+    string_conv = snakecase(string, keep_together).replace('_', separator)
+    before = ("" if (string[0].isalnum()
+                     or string[:len(separator)] == separator
+                     or string_conv[:len(separator):] == separator)
+                 else separator)
+    after = ("" if (string[-1].isalnum()
+                    or string[:-len(separator)] == separator
+                    or string_conv[:-len(separator)] == separator)
+                else separator)
+    return f"{before}{string_conv}{after}"
 
 
 def sentencecase(string: str) -> str:
@@ -174,7 +201,7 @@ def alphanumcase(string: str) -> str:
     """
     if not string:
         return ""
-    return ''.join(filter(str.isalnum, string))
+    return re.sub(r"[\W_]", "", string)
 
 
 def lowercase(string: str) -> str:

@@ -4,8 +4,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="casefy-DMLLS",
-    version="0.1.0",
+    name="casefy",
+    version="0.0.9",
     author="Diego Miguel Lozano",
     author_email="hello@diegomiguel.me",
     description="Utilities for string case conversion",

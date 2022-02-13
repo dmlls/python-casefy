@@ -27,7 +27,7 @@ pip install -U casefy
 
 ## Examples
 
-Note: for more details, you can check the API Reference.
+Note: for more details, you can check the [API Reference](https://dmlls.github.io/python-casefy/api.html).
 
 ```python
 import casefy

@@ -1,5 +1,11 @@
 """Tests for casefy."""
 
+__version__ = '0.1.0'
+
+
+import sys
+import pathlib
+sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.resolve()))
 import casefy
 
 
@@ -141,6 +147,8 @@ def main():
     assert "FooBar" == casefy.capitalcase("fooBar")
     assert "" == casefy.capitalcase("")
     assert "" == casefy.capitalcase(None)
+
+    print("OK")
 
 
 if __name__ == "__main__":

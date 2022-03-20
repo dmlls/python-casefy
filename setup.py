@@ -23,4 +23,7 @@ setuptools.setup(
     package_dir={"": "casefy"},
     packages=setuptools.find_packages(where="casefy"),
     python_requires=">=3.6",
+    package_data={
+        "": ["py.typed"],
+    }
 )

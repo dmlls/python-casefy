@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="casefy",
-    version="0.1.1",
+    version="0.1.2",
     author="Diego Miguel Lozano",
     author_email="hello@diegomiguel.me",
     description="Utilities for string case conversion.",

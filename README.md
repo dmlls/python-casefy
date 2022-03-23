@@ -44,6 +44,15 @@ print(string)  # fooBar
 string = casefy.camelcase("FOO BAR")
 print(string)  # fooBar
 
+
+# PascalCase
+string = casefy.pascalcase("foo_bar")
+print(string)  # FooBar
+
+string = casefy.pascalcase("fooBar")
+print(string)  # FooBar
+
+
 # snake_case
 string = casefy.snakecase("fooBar")
 print(string)  # foo_bar
@@ -54,13 +63,21 @@ print(string)  # foo_bar_baz
 string = casefy.snakecase("FOO BAR")
 print(string)  # foo_bar
 
+
 # CONST_CASE
 string = casefy.constcase("fooBar")
 print(string)  # FOO_BAR
 
+
 # kebab-case
 string = casefy.kebabcase("fooBar")
 print(string)  # foo-bar
+
+
+# UPPER-KEBAB-CASE
+string = casefy.upperkebabcase("fooBar")
+print(string)  # FOO-BAR
+
 
 # separator case
 string = casefy.separatorcase("fooBar", separator="/")
@@ -69,9 +86,20 @@ print(string)  # foo/bar
 string = casefy.separatorcase("fooBARbaz", separator="%", keep_together=["bar"])
 print(string)  # foo%bar%baz
 
+
 # Sentence case
 string = casefy.sentencecase("fooBar")
 print(string)  # Foo bar
+
+
+# Title Case
+string = casefy.titlecase("fooBar")
+print(string)  # Foo Bar
+
+
+# Alphanum3ric case (removes non-alphanumeric chars)
+string = casefy.alphanumcase("foo - 123 ; bar!")
+print(string)  # foo123bar
 ```
 
 <br>

@@ -1,7 +1,5 @@
 """Utilities for string case conversion."""
 
-__version__ = "0.1.2"
-
 import re
 from typing import List
 

@@ -1,6 +1,58 @@
 [build-system]
 requires = [
-    "setuptools>=61.0",
-    "wheel"
+    "hatchling",
 ]
-build-backend = "setuptools.build_meta"
+build-backend = "hatchling.build"
+
+[project]
+name = "casefy"
+dynamic = [
+    "version",
+]
+authors = [
+    { name="Diego Miguel Lozano", email="hello@diegomiguel.me" },
+]
+maintainers = [
+    { name="Diego Miguel Lozano", email="hello@diegomiguel.me" },
+]
+description = "Utilities for string case conversion."
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.6"
+keywords = [
+    "case",
+    "casing",
+    "casefy",
+    "case-converter",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Text Processing",
+    "Topic :: Utilities",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
+[project.urls]
+Homepage = "https://github.com/dmlls/python-casefy"
+Documentation = "https://dmlls.github.io/python-casefy/"
+"GitHub Issues" = "https://github.com/dmlls/python-casefy/issues"
+"GitHub Repo" = "https://github.com/dmlls/python-casefy/"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.version]
+path = "casefy/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = [
+    "casefy",
+]

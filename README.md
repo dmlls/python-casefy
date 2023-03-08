@@ -1,8 +1,8 @@
-<p align="center"><img width="400" src="https://github.com/dmlls/python-casefy/blob/main/docs/source/_static/images/cover.png" alt=""></p>
+<p align="center"><img width="400" src="https://github.com/dmlls/python-casefy/blob/main/docs/source/_static/images/cover.png" alt="Casefy"/></p>
 <p align="center" display="inline-block">
   <a href="https://docs.jizt.it">
     <a href="https://pypi.org/project/casefy/">
-      <img src="https://img.shields.io/pypi/v/casefy">
+      <img src="https://img.shields.io/pypi/v/casefy"/>
     </a>
     <a href="https://deepsource.io/gh/dmlls/python-casefy/?ref=repository-badge}" target="_blank">
       <img alt="Active Issues" title="DeepSource" src="https://deepsource.io/gh/dmlls/python-casefy.svg/?label=active+issues&token=dbO3UyrUPWvJp6K_PVZpTcnU"/>

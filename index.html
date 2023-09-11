@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Casefy — String casing utilities &mdash; Casefy 0.1.2 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.png"/>
+    <link rel="canonical" href="dmlls.github.io/casefy/index.html" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Casefy
+            <img src="_static/cover_mono.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Casefy</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Casefy — String casing utilities</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/dmlls/casefy/blob/main/docs/source/index.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="casefy-string-casing-utilities">
+<h1>Casefy — String casing utilities<a class="headerlink" href="#casefy-string-casing-utilities" title="Permalink to this headline"></a></h1>
+<p>Casefy is a lightweight Python package to convert the casing of strings. It has
+no dependencies and supports Unicode characters.</p>
+<p>You can find the project repository on <a class="reference external" href="https://github.com/dmlls/python-casefy">GitHub</a>. Any improvements are welcome!</p>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<p>The latest release can be installed using <a class="reference external" href="https://pypi.org/project/pip/">pip</a>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install -U casefy
+</pre></div>
+</div>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more details, you can check the <a class="reference internal" href="api.html#api"><span class="std std-ref">API Reference</span></a>.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">casefy</span>
+
+<span class="c1"># camelCase</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">camelcase</span><span class="p">(</span><span class="s2">&quot;foo_bar&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># fooBar</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">camelcase</span><span class="p">(</span><span class="s2">&quot;FooBar&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># fooBar</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">camelcase</span><span class="p">(</span><span class="s2">&quot;FOO BAR&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># fooBar</span>
+
+<span class="c1"># snake_case</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">snakecase</span><span class="p">(</span><span class="s2">&quot;fooBar&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># foo_bar</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">snakecase</span><span class="p">(</span><span class="s2">&quot;fooBARbaz&quot;</span><span class="p">,</span> <span class="n">keep_together</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># foo_bar_baz</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">snakecase</span><span class="p">(</span><span class="s2">&quot;FOO BAR&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># foo_bar</span>
+
+<span class="c1"># CONST_CASE</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">constcase</span><span class="p">(</span><span class="s2">&quot;fooBar&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># FOO_BAR</span>
+
+<span class="c1"># kebab-case</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">kebabcase</span><span class="p">(</span><span class="s2">&quot;fooBar&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># foo-bar</span>
+
+<span class="c1"># separator case</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">separatorcase</span><span class="p">(</span><span class="s2">&quot;fooBar&quot;</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># foo/bar</span>
+
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">separatorcase</span><span class="p">(</span><span class="s2">&quot;fooBARbaz&quot;</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s2">&quot;%&quot;</span><span class="p">,</span> <span class="n">keep_together</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># foo%bar%baz</span>
+
+<span class="c1"># Sentence case</span>
+<span class="n">string</span> <span class="o">=</span> <span class="n">casefy</span><span class="o">.</span><span class="n">sentencecase</span><span class="p">(</span><span class="s2">&quot;fooBar&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>  <span class="c1"># Foo bar</span>
+</pre></div>
+</div>
+</section>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API Reference</a></li>
+</ul>
+</div>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Permalink to this headline"></a></h2>
+<p>This project is distributed under the <a class="reference external" href="https://github.com/dmlls/python-casefy/blob/main/LICENSE">MIT</a> license.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="api.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Diego Miguel Lozano.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

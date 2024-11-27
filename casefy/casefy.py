@@ -28,10 +28,10 @@ def pascalcase(string: str) -> str:
 
     Args:
         string (:obj:`str`):
-            The string to convert to CamelCase.
+            The string to convert to PascalCase.
 
     Returns:
-        :obj:`str`: The CamelCased string.
+        :obj:`str`: The PascalCased string.
     """
     if not string:
         return ""

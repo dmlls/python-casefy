@@ -18,7 +18,7 @@ def camelcase(string: str) -> str:
         return ""
     # Turn into snake_case, then remove "_" and capitalize first letter
     string = "".join(f"{s[0].upper()}{s[1:].lower()}"
-                     for s in re.split(r'_', snakecase(string)) if s)
+                     for s in re.split(r"_", snakecase(string)) if s)
     # Make first letter lower
     return f"{string[0].lower()}{string[1:]}" if string else ""
 
@@ -136,7 +136,7 @@ def separatorcase(
     """
     if not string:
         return ""
-    string_conv = snakecase(string, keep_together).replace('_', separator)
+    string_conv = snakecase(string, keep_together).replace("_", separator)
     before = ("" if (string[0].isalnum()
                      or string[:len(separator)] == separator
                      or string_conv[:len(separator):] == separator)

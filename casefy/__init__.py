@@ -1,19 +1,19 @@
 __version__ = "1.0.0"
 
 from .casefy import (
+    alphanumcase,
     camelcase,
-    pascalcase,
-    snakecase,
+    capitalcase,
     constcase,
     kebabcase,
-    upperkebabcase,
-    separatorcase,
-    sentencecase,
-    titlecase,
-    alphanumcase,
     lowercase,
+    pascalcase,
+    sentencecase,
+    separatorcase,
+    snakecase,
+    titlecase,
     uppercase,
-    capitalcase
+    upperkebabcase,
 )
 
 # Don't expose the submodule itself
@@ -32,5 +32,5 @@ __all__ = [
     "alphanumcase",
     "lowercase",
     "uppercase",
-    "capitalcase"
+    "capitalcase",
 ]

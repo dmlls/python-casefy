@@ -55,7 +55,6 @@ def main():
     assert "foo_bar" == casefy.snakecase("FooBar")
     assert "foo_bar" == casefy.snakecase("FOO BAR")
     assert "foo_bar" == casefy.snakecase("foo bar")
-    assert "foo_bar_baz" == casefy.snakecase("fooBARbaz", keep_together=["BAR"])
     assert "foo_bar_2" == casefy.snakecase("fooBar2")
     assert "foo_2_bar" == casefy.snakecase("foo2bar")
     assert "foo_2_bar" == casefy.snakecase("foo2Bar")
@@ -66,6 +65,10 @@ def main():
     assert "foo_bar" == casefy.snakecase("foo.bar")
     assert "_bar_baz" == casefy.snakecase("_bar_baz")
     assert "bar_baz" == casefy.snakecase(".bar_baz")
+    assert "foo_bar_baz" == casefy.snakecase("fooBARbaz", keep_together=["BAR"])
+    assert "foo_bar_v2" == casefy.snakecase("FooBarV2", keep_together=["V2"])
+    assert "foo_bar_ids_v2" == casefy.snakecase("FooBarIDsV2", keep_together=["IDs", "V2"])
+    assert "foobar_ids_v2" == casefy.snakecase("FooBarIDsV2", keep_together=["FooBar", "IDs", "V2"])
     assert "" == casefy.snakecase("")
     assert "" == casefy.snakecase(None)
 
@@ -125,8 +128,6 @@ def main():
 
     # separator case
     assert "foo.bar" == casefy.separatorcase("fooBar", separator=".")
-    assert "foo/bar/baz" == casefy.separatorcase(
-        "fooBARbaz", separator="/", keep_together=["BAR"])
     assert r"foo%bar%2" == casefy.separatorcase("fooBar2", separator="%")
     assert "foo&2&bar" == casefy.separatorcase("foo2Bar", separator="&")
     assert "foo?bar" == casefy.separatorcase("foo_bar", separator="?")
@@ -134,6 +135,10 @@ def main():
     assert "foo=bar" == casefy.separatorcase("foo.bar", separator="=")
     assert "@bar@baz" == casefy.separatorcase("_bar_baz", separator="@")
     assert "#!bar#!baz" == casefy.separatorcase(".bar_baz", separator="#!")
+    assert "foo/bar/baz" == casefy.separatorcase(
+        "fooBARbaz", separator="/", keep_together=["BAR"])
+    assert "foo|bar|v2" == casefy.separatorcase("FooBarV2", separator="|", keep_together=["V2"])
+    assert "foo|bar|ids|v2" == casefy.separatorcase("FooBarIDsV2", separator="|", keep_together=["IDs", "V2"])
     assert "" == casefy.separatorcase("", separator="")
     assert "" == casefy.separatorcase(None, separator="")
 

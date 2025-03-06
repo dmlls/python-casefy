@@ -8,7 +8,7 @@ def camelcase(string: str) -> str:
     """Convert a string into camelCase.
 
     Args:
-        string (:obj:`str`): 
+        string (:obj:`str`):
             The string to convert to camelCase.
 
     Returns:
@@ -45,27 +45,45 @@ def snakecase(string: str, keep_together: List[str] = None) -> str:
         string (:obj:`str`):
             The string to convert to snake_case.
         keep_together (:obj:`List[str]`, `optional`):
-            (Upper) characters to not split, e.g., "HTTP".
+            Substrings to not split (case sensitive), e.g., "HTTP".
 
     Returns:
         :obj:`str`: The snake_cased string.
     """
     if not string:
         return ""
+    if keep_together is None:
+        keep_together = []
     leading_underscore: bool = string[0] == "_"
     trailing_underscore: bool = string[-1] == "_"
-    # If all uppercase, turn into lowercase
+    # If all uppercase, turn into lowercase, preserving the keep together in
+    # upper case
     if string.isupper():
-        string = string.lower()
-    if keep_together:
         for keep in keep_together:
             string = string.replace(keep, f"_{keep.lower()}_")
+        string = string.swapcase()
+    if keep_together:
+        # Here, we use "The Greatest Regex Trick Ever" here (see
+        # https://www.rexegg.com/regex-best-trick.php)
+        keep_pattern = rf"{'|'.join(f'({re.escape(keep)})' for keep in keep_together)}|"
+        capturing_groups = r"".join(rf"\{i}" for i in range(1, len(keep_together) + 2))
+    else:
+        keep_pattern = r""
+        capturing_groups = r"\1"
     # Manage separators
     string = re.sub(r"[\W]", "_", string)
     # Manage capital letters and numbers
-    string = re.sub(r"([A-Z]|\d+)", r"_\1", string)
+    string = re.sub(
+        fr"{keep_pattern}([A-Z]|\d+)",
+        fr"_{capturing_groups}",
+        string
+    )
     # Add "_" after numbers
-    string = re.sub(r"(\d+)", r"\1_", string).lower()
+    string = re.sub(
+        fr"{keep_pattern}(\d+)",
+        fr"{capturing_groups}_",
+        string
+    ).lower()
     # Remove repeated "_"
     string = re.sub(r"[_]{2,}", "_", string)
     string = re.sub(r"^_", "", string) if not leading_underscore else string
@@ -130,6 +148,8 @@ def separatorcase(
             The string to convert.
         separator (:obj:`str`):
             The separator to use.
+        keep_together (:obj:`List[str]`, `optional`):
+            Substrings to not split (case sensitive), e.g., "HTTP".
 
     Returns:
         :obj:`str`: The separator cased string.

@@ -17,8 +17,9 @@ def camelcase(string: str) -> str:
     if not string:
         return ""
     # Turn into snake_case, then remove "_" and capitalize first letter
-    string = "".join(f"{s[0].upper()}{s[1:].lower()}"
-                     for s in re.split(r"_", snakecase(string)) if s)
+    string = "".join(
+        f"{s[0].upper()}{s[1:].lower()}" for s in re.split(r"_", snakecase(string)) if s
+    )
     # Make first letter lower
     return f"{string[0].lower()}{string[1:]}" if string else ""
 
@@ -73,17 +74,9 @@ def snakecase(string: str, keep_together: List[str] = None) -> str:
     # Manage separators
     string = re.sub(r"[\W]", "_", string)
     # Manage capital letters and numbers
-    string = re.sub(
-        fr"{keep_pattern}([A-Z]|\d+)",
-        fr"_{capturing_groups}",
-        string
-    )
+    string = re.sub(rf"{keep_pattern}([A-Z]|\d+)", rf"_{capturing_groups}", string)
     # Add "_" after numbers
-    string = re.sub(
-        fr"{keep_pattern}(\d+)",
-        fr"{capturing_groups}_",
-        string
-    ).lower()
+    string = re.sub(rf"{keep_pattern}(\d+)", rf"{capturing_groups}_", string).lower()
     # Remove repeated "_"
     string = re.sub(r"[_]{2,}", "_", string)
     string = re.sub(r"^_", "", string) if not leading_underscore else string
@@ -136,11 +129,7 @@ def upperkebabcase(string: str) -> str:
     return uppercase(kebabcase(string))
 
 
-def separatorcase(
-    string: str,
-    separator: str,
-    keep_together: List[str] = None
-) -> str:
+def separatorcase(string: str, separator: str, keep_together: List[str] = None) -> str:
     """Convert a string into a case with an arbitrary separator.
 
     Args:
@@ -157,14 +146,24 @@ def separatorcase(
     if not string:
         return ""
     string_conv = snakecase(string, keep_together).replace("_", separator)
-    before = ("" if (string[0].isalnum()
-                     or string[:len(separator)] == separator
-                     or string_conv[:len(separator):] == separator)
-                 else separator)
-    after = ("" if (string[-1].isalnum()
-                    or string[:-len(separator)] == separator
-                    or string_conv[:-len(separator)] == separator)
-                else separator)
+    before = (
+        ""
+        if (
+            string[0].isalnum()
+            or string[: len(separator)] == separator
+            or string_conv[: len(separator) :] == separator
+        )
+        else separator
+    )
+    after = (
+        ""
+        if (
+            string[-1].isalnum()
+            or string[: -len(separator)] == separator
+            or string_conv[: -len(separator)] == separator
+        )
+        else separator
+    )
     return f"{before}{string_conv}{after}"
 
 

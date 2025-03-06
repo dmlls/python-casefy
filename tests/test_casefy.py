@@ -3,8 +3,9 @@
 __version__ = "0.1.2"
 
 
-import sys
 import pathlib
+import sys
+
 sys.path.insert(0, str(pathlib.Path(__file__).parent.parent.resolve()))
 import casefy
 
@@ -67,8 +68,12 @@ def main():
     assert "bar_baz" == casefy.snakecase(".bar_baz")
     assert "foo_bar_baz" == casefy.snakecase("fooBARbaz", keep_together=["BAR"])
     assert "foo_bar_v2" == casefy.snakecase("FooBarV2", keep_together=["V2"])
-    assert "foo_bar_ids_v2" == casefy.snakecase("FooBarIDsV2", keep_together=["IDs", "V2"])
-    assert "foobar_ids_v2" == casefy.snakecase("FooBarIDsV2", keep_together=["FooBar", "IDs", "V2"])
+    assert "foo_bar_ids_v2" == casefy.snakecase(
+        "FooBarIDsV2", keep_together=["IDs", "V2"]
+    )
+    assert "foobar_ids_v2" == casefy.snakecase(
+        "FooBarIDsV2", keep_together=["FooBar", "IDs", "V2"]
+    )
     assert "" == casefy.snakecase("")
     assert "" == casefy.snakecase(None)
 
@@ -136,9 +141,14 @@ def main():
     assert "@bar@baz" == casefy.separatorcase("_bar_baz", separator="@")
     assert "#!bar#!baz" == casefy.separatorcase(".bar_baz", separator="#!")
     assert "foo/bar/baz" == casefy.separatorcase(
-        "fooBARbaz", separator="/", keep_together=["BAR"])
-    assert "foo|bar|v2" == casefy.separatorcase("FooBarV2", separator="|", keep_together=["V2"])
-    assert "foo|bar|ids|v2" == casefy.separatorcase("FooBarIDsV2", separator="|", keep_together=["IDs", "V2"])
+        "fooBARbaz", separator="/", keep_together=["BAR"]
+    )
+    assert "foo|bar|v2" == casefy.separatorcase(
+        "FooBarV2", separator="|", keep_together=["V2"]
+    )
+    assert "foo|bar|ids|v2" == casefy.separatorcase(
+        "FooBarIDsV2", separator="|", keep_together=["IDs", "V2"]
+    )
     assert "" == casefy.separatorcase("", separator="")
     assert "" == casefy.separatorcase(None, separator="")
 

@@ -84,14 +84,14 @@ print(string)  # Foo bar
 string = casefy.separatorcase("fooBar", separator="/")
 print(string)  # foo/bar
 
-string = casefy.separatorcase("fooBARbaz", separator="%", keep_together=["bar"])
+string = casefy.separatorcase("fooBARbaz", separator="%", keep_together=["BAR"])
 print(string)  # foo%bar%baz
 
 # snake_case
 string = casefy.snakecase("fooBar")
 print(string)  # foo_bar
 
-string = casefy.snakecase("fooBARbaz", keep_together=["bar"])
+string = casefy.snakecase("fooBARbaz", keep_together=["BAR"])
 print(string)  # foo_bar_baz
 
 string = casefy.snakecase("FOO BAR")

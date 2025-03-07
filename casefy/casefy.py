@@ -46,7 +46,7 @@ def snakecase(string: str, keep_together: List[str] = None) -> str:
         string (:obj:`str`):
             The string to convert to snake_case.
         keep_together (:obj:`List[str]`, `optional`):
-            Substrings to not split (case sensitive), e.g., "HTTP".
+            Substrings not to split (case sensitive), e.g., "HTTP".
 
     Returns:
         :obj:`str`: The snake_cased string.
@@ -138,7 +138,7 @@ def separatorcase(string: str, separator: str, keep_together: List[str] = None) 
         separator (:obj:`str`):
             The separator to use.
         keep_together (:obj:`List[str]`, `optional`):
-            Substrings to not split (case sensitive), e.g., "HTTP".
+            Substrings not to split (case sensitive), e.g., "HTTP".
 
     Returns:
         :obj:`str`: The separator cased string.

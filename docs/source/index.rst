@@ -28,6 +28,10 @@ Examples
 
    import casefy
 
+   # Alphanum3ric case (removes non-alphanumeric chars)
+   string = casefy.alphanumcase("foo - 123 ; bar!")
+   print(string)  # foo123bar
+
    # camelCase
    string = casefy.camelcase("foo_bar")
    print(string)  # fooBar
@@ -38,35 +42,61 @@ Examples
    string = casefy.camelcase("FOO BAR")
    print(string)  # fooBar
 
-   # snake_case
-   string = casefy.snakecase("fooBar")
-   print(string)  # foo_bar
-    
-   string = casefy.snakecase("fooBARbaz", keep_together=["bar"])
-   print(string)  # foo_bar_baz
-   
-   string = casefy.snakecase("FOO BAR")
-   print(string)  # foo_bar
+   # Capital Case
+   string = casefy.capitalcase("fooBar")
+   print(string)  # FooBar
 
    # CONST_CASE
    string = casefy.constcase("fooBar")
    print(string)  # FOO_BAR
-   
+
    # kebab-case
    string = casefy.kebabcase("fooBar")
    print(string)  # foo-bar
-   
-   # separator case
-   string = casefy.separatorcase("fooBar", separator="/")
-   print(string)  # foo/bar
 
-   string = casefy.separatorcase("fooBARbaz", separator="%", keep_together=["bar"])
-   print(string)  # foo%bar%baz
+   # lowercase
+   string = casefy.lowercase("fooBar")
+   print(string)  # foobar
+
+   # PascalCase
+   string = casefy.pascalcase("foo_bar")
+   print(string)  # FooBar
+
+   string = casefy.pascalcase("fooBar")
+   print(string)  # FooBar
 
    # Sentence case
    string = casefy.sentencecase("fooBar")
    print(string)  # Foo bar
 
+   # Separator case
+   string = casefy.separatorcase("fooBar", separator="/")
+   print(string)  # foo/bar
+
+   string = casefy.separatorcase("fooBARbaz", separator="%", keep_together=["BAR"])
+   print(string)  # foo%bar%baz
+
+   # snake_case
+   string = casefy.snakecase("fooBar")
+   print(string)  # foo_bar
+
+   string = casefy.snakecase("fooBARbaz", keep_together=["BAR"])
+   print(string)  # foo_bar_baz
+
+   string = casefy.snakecase("FOO BAR")
+   print(string)  # foo_bar
+
+   # Title Case
+   string = casefy.titlecase("fooBarBaz")
+   print(string)  # Foo Bar Baz
+
+   # UPPERCASE
+   string = casefy.uppercase("fooBar")
+   print(string)  # FOOBAR
+
+   # UPPER-KEBAB-CASE
+   string = casefy.upperkebabcase("fooBar")
+   print(string)  # FOO-BAR
 
 Contents
 --------
